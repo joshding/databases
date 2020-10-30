@@ -26,12 +26,12 @@ var App = {
       console.log('in parse.readall: ', data);
 
       // Don't bother to update if we have no messages
-      if (!data[0].text || !data[0].text.length) {
+      if (!data.results.length) {
         callback();
         return;
       }
-      Rooms.update(data[0].roomsId, RoomsView.render);
-      Messages.update(data[0].text, MessagesView.render);
+      Rooms.update(data.results, RoomsView.render);
+      Messages.update(data.results, MessagesView.render);
 
       callback();
     });

@@ -3,10 +3,9 @@ var models = require('../models');
 module.exports = {
   get: function (req, res) {},
   post: function (req, res) {
-    console.log('successful post in users!!');
+    console.log('successful post in users!!: ', req.body.text);
     //we'll probably need to call our post function from users.js in models. input req.whatever the input was
-    
-    res.send('helloooo');
-    res.status(200).end();
+    models.users.create({name: req.body.text});
+    res.status(200).json(req.body);
   }
 };

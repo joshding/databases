@@ -8,16 +8,16 @@ module.exports = {
       if(err) {
         res.status(404).send(err);
       } else {
-        res.status(201).json(data);
+        res.status(201).json({results: data});
       }
     });
 
   }, // a function which handles a get request for all messages
   post: function (req, res) {
-    console.log('successful post in messages!!');
+    console.log('successful post in messages!!: ', req.body.text);
     // we'll need to call models.messages.create so they can query a post into the database.
 
-    models.messages.create({usersid: 1, roomsid: 1, text: req.body.text});
+    models.messages.create({usersId: 1, roomsId: 1, text: req.body.text});
     res.status(200).json(req.body);
   } // a function which handles posting a message to the database
 };
